@@ -62,6 +62,16 @@ describe("rest node https proxy interceptor", function() {
             })
     })
 
+    it("should throw if second param is not an object", function() {
+        [7, [], Infinity, "a string", function(){}]
+            .forEach(function(candidate_config) {
+                expect(proxy.bind(proxy,
+                    function (request) { return { request: request } },
+                    candidate_config
+                )).to.throw('second param should be an object')
+            })
+    })
+
     it("should support interceptor wrapping", function(done) {
         expect(typeof proxy().wrap).to.equal("function")
         done()

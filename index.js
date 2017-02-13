@@ -25,6 +25,9 @@ var HttpsProxyAgent = require('https-proxy-agent')
 module.exports = interceptor({
 	client: nodeClient,
 	init: function (config) {
+		if (typeof config !== "object" || Array.isArray(config) || config === null) {
+			throw new Error("second param should be an object")
+		}
 		if (typeof config.url !== "undefined" && typeof config.url !== "string") {
 			throw new Error("url should be a String")
 		}

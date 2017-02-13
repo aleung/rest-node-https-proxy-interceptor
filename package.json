@@ -1,6 +1,6 @@
 {
   "name": "rest-node-https-proxy-interceptor",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "https proxy for the rest node client",
   "keywords": [
     "rest",
