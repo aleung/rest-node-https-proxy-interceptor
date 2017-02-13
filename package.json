@@ -1,8 +1,13 @@
 {
   "name": "rest-node-https-proxy-interceptor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "https proxy for the rest node client",
-  "keywords": ["rest", "client", "https", "proxy"],
+  "keywords": [
+    "rest",
+    "client",
+    "https",
+    "proxy"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "mocha test.js"
