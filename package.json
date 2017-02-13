@@ -1,0 +1,25 @@
+{
+  "name": "rest-node-https-proxy-interceptor",
+  "version": "0.1.0",
+  "description": "https proxy for the rest node client",
+  "keywords": ["rest", "client", "https", "proxy"],
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test.js"
+  },
+  "author": "Sander 'rmi7' Remie <sander@dimebox.com> (https://github.com/rmi7)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dimebox/rest-node-https-proxy-interceptor.git"
+  },
+  "bugs": "https://github.com/dimebox/rest-node-https-proxy-interceptor/issues",
+  "dependencies": {
+    "https-proxy-agent": "^1.0.0",
+    "rest": "^2.0.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}
