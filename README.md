@@ -1,9 +1,9 @@
 # rest node https proxy interceptor
 
-this is a plugin for the [cujojs/rest](https://github.com/cujojs/rest) module.
-what this plugin does is add support for using an HTTPS proxy.
+This is a plugin for the [cujojs/rest](https://github.com/cujojs/rest) module.
+What this plugin does is add support for using an HTTPS proxy.
 
-this plugin **ONLY** works with the node client of `cujojs/rest`.
+This plugin **ONLY** works with the node client of `cujojs/rest`.
 
 ## Install
 
@@ -13,9 +13,11 @@ npm install rest-node-https-proxy-interceptor
 
 ## Proxy
 
-to use this you need to have a proxy running, for example `squid`. Change the `url` accordingly!
+To use this you need to have a proxy running, for example `squid`.
 
 An online list of free SSL/HTTPS proxies can be found [here](https://www.sslproxies.org/)
+
+Set proxy address into `url`. If `url` is not provided, environment variable `HTTPS_PROXY` is used.
 
 ## Usage
 
@@ -31,6 +33,12 @@ client('https://nodejs.org/en/').then(function(response) {
     // response will contain the html of https://nodejs.org/en/
     // and the HTTPS request/response will be proxied through http://127.0.0.1:3128
 });
+```
+
+Use environment variable `HTTPS_PROXY`:
+
+``` javascript
+var client = rest.wrap(restHttpsProxy);
 ```
 
 ## How is it possible to proxy HTTPS?

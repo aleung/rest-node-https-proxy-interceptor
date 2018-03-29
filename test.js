@@ -25,7 +25,10 @@ describe("rest node https proxy interceptor", function() {
             })
     })
 
-    it("should not add agent to request.mixin if no proxy url provided", function() {
+    it("should use HTTPS_PROXY env if no proxy url provided", function() {
+        var proxy_url = "http://127.0.0.1:3128/"
+        process.env['HTTPS_PROXY'] = proxy_url;
+
         var client = proxy(
             function (request) { return { request: request } }
         )
@@ -34,7 +37,12 @@ describe("rest node https proxy interceptor", function() {
             .then(function (response) {
                 expect(response).to.be.an("object")
                 expect(response).to.have.property("request").to.be.an("object")
-                expect(response.request).to.not.have.property("mixin")
+                expect(response.request).to.have.property("mixin").to.be.an("object")
+                expect(response.request.mixin).to.have.property("agent").to.be.an("object")
+                expect(response.request.mixin.agent).to.be.an.instanceof(HttpsProxyAgent)
+                expect(response.request.mixin.agent).to.have.property("proxy").to.be.an("object")
+                expect(response.request.mixin.agent.proxy).to.have.property("href").to.be.a("string")
+                expect(response.request.mixin.agent.proxy.href).to.equal(proxy_url)
             })
     })
 

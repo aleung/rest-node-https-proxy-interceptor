@@ -28,6 +28,9 @@ module.exports = interceptor({
 		if (typeof config !== "object" || Array.isArray(config) || config === null) {
 			throw new Error("second param should be an object")
 		}
+		if (!config.hasOwnProperty('url')) {
+			config.url = process.env['HTTPS_PROXY']
+		}
 		if (typeof config.url !== "undefined" && typeof config.url !== "string") {
 			throw new Error("url should be a String")
 		}
